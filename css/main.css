@@ -263,3 +263,35 @@ textarea {
   }
 }
 
+h1 {
+  margin: 0.5em 1rem;
+}
+
+.horse-odds {
+  margin: 0 1rem;
+}
+
+.horse-odds__horse {
+  margin-bottom: 0.5em;
+}
+
+.horse-odds__input {
+  width: 2em;
+  text-align: right;
+  border: 0;
+  border-bottom: 1px dotted #8a8a8a;
+}
+
+.horse-odds__input::-webkit-outer-spin-button,
+.horse-odds__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.horse-odds__percentage {
+  font-style: italic;
+}
+
+.horse-odds__advice {
+  font-weight: bold;
+}
