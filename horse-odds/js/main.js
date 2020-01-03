@@ -1,46 +1,46 @@
 /* eslint prefer-arrow-callback: "off" */
 let form = document.querySelector( 'form.horse-odds' );
 
-function oddsToPercentage ( odds ) {
+function oddsToPercentage( odds ) {
   if ( ! odds ) {
     return 0;
   }
   return 1 / ( odds + 1 );
 }
 
-function getHorseOdds () {
+function getHorseOdds() {
   // eslint-disable-next-line prefer-reflect
   let horseInputNodes = [].slice.call( document.querySelectorAll( '.horse-odds__input' ) );
-  return horseInputNodes.map( function( node ) {
+  return horseInputNodes.map( ( node ) => {
     return node.value ? Number( node.value ) : 0;
   } );
 }
 
-function getHorsePercentages () {
+function getHorsePercentages() {
   return getHorseOdds().map( oddsToPercentage );
 }
 
-function getTotalPercentages () {
-  return getHorsePercentages().reduce( function( sum, pct ) {
+function getTotalPercentages() {
+  return getHorsePercentages().reduce( ( sum, pct ) => {
     return sum + pct;
   }, 0 );
 }
 
-function getHorseOutputNode ( idx ) {
+function getHorseOutputNode( idx ) {
   return document.querySelector( `.horse-odds__percentage[data-horse="${ idx + 1 }"]` );
 }
 
-document.querySelectorAll( '.horse-odds__input' ).forEach( function( input ) {
-  input.addEventListener( 'focus', function( evt ) {
+document.querySelectorAll( '.horse-odds__input' ).forEach( ( input ) => {
+  input.addEventListener( 'focus', ( evt ) => {
     evt.target.value = '';
   } );
 } );
 
-function toPct ( val, digits ) {
+function toPct( val, digits ) {
   return `${ ( val * 100 ).toFixed( digits || 2 ) }%`;
 }
 
-form.addEventListener( 'change', function() {
+form.addEventListener( 'change', () => {
 
   // Update posted percentages
   let percentages = getHorsePercentages();
@@ -59,7 +59,7 @@ form.addEventListener( 'change', function() {
 
   // Update per-horse odds.
   let actuals = [];
-  percentages.forEach( function( pct, idx ) {
+  percentages.forEach( ( pct, idx ) => {
     let output = getHorseOutputNode( idx );
 
     if ( ! pct ) {
@@ -82,7 +82,7 @@ form.addEventListener( 'change', function() {
     horse: [ 0 ],
     pct: -Infinity,
   };
-  actuals.forEach( function( pct, idx ) {
+  actuals.forEach( ( pct, idx ) => {
     if ( best.pct < pct ) {
       best = {
         horse: [ idx ],
@@ -94,7 +94,7 @@ form.addEventListener( 'change', function() {
   } );
   document.querySelector( '.horse-odds__advice' ).innerHTML = `Bet on horse${
     best.horse.length > 1 ? 's' : ''
-  } ${ best.horse.map( function( idx ) {
+  } ${ best.horse.map( ( idx ) => {
     return `#${ idx + 1 }`;
   } ).join( ' or ' ) }`;
 } );

@@ -64,7 +64,7 @@ module.exports = {
     'eqeqeq': 'error',
     'func-call-spacing': 'error',
     'func-name-matching': 'error',
-    'func-names': 'off',
+    'func-names': 'error',
     'func-style': [
       'error',
       'declaration',
@@ -222,7 +222,7 @@ module.exports = {
     'operator-linebreak': 'error',
     'padded-blocks': 'off',
     'padding-line-between-statements': 'error',
-    'prefer-arrow-callback': 'off',
+    'prefer-arrow-callback': 'error',
     'prefer-const': 'off',
     'prefer-destructuring': 'off',
     'prefer-exponentiation-operator': 'error',
@@ -255,11 +255,7 @@ module.exports = {
     'sort-keys': 'off',
     'sort-vars': 'error',
     'space-before-blocks': 'error',
-    'space-before-function-paren': [ 'error', {
-      'anonymous': 'never',
-      'named': 'always',
-      'asyncArrow': 'always',
-    } ],
+    'space-before-function-paren': [ 'error', 'never' ],
     'space-in-parens': [ 'error', 'always' ],
     'space-infix-ops': 'error',
     'space-unary-ops': [ 'error', {
