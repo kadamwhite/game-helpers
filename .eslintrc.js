@@ -64,7 +64,7 @@ module.exports = {
     'eqeqeq': 'error',
     'func-call-spacing': 'error',
     'func-name-matching': 'error',
-    'func-names': 'error',
+    'func-names': 'off',
     'func-style': [
       'error',
       'declaration',
@@ -222,7 +222,7 @@ module.exports = {
     'operator-linebreak': 'error',
     'padded-blocks': 'off',
     'padding-line-between-statements': 'error',
-    'prefer-arrow-callback': 'error',
+    'prefer-arrow-callback': 'off',
     'prefer-const': 'off',
     'prefer-destructuring': 'off',
     'prefer-exponentiation-operator': 'error',

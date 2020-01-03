@@ -1,3 +1,4 @@
+/* eslint prefer-arrow-callback: "off" */
 let form = document.querySelector( 'form.horse-odds' );
 
 function oddsToPercentage ( odds ) {
@@ -10,7 +11,7 @@ function oddsToPercentage ( odds ) {
 function getHorseOdds () {
   // eslint-disable-next-line prefer-reflect
   let horseInputNodes = [].slice.call( document.querySelectorAll( '.horse-odds__input' ) );
-  return horseInputNodes.map( ( node ) => {
+  return horseInputNodes.map( function( node ) {
     return node.value ? Number( node.value ) : 0;
   } );
 }
@@ -20,7 +21,7 @@ function getHorsePercentages () {
 }
 
 function getTotalPercentages () {
-  return getHorsePercentages().reduce( ( sum, pct ) => {
+  return getHorsePercentages().reduce( function( sum, pct ) {
     return sum + pct;
   }, 0 );
 }
@@ -29,8 +30,8 @@ function getHorseOutputNode ( idx ) {
   return document.querySelector( `.horse-odds__percentage[data-horse="${ idx + 1 }"]` );
 }
 
-document.querySelectorAll( '.horse-odds__input' ).forEach( ( input ) => {
-  input.addEventListener( 'focus', ( evt ) => {
+document.querySelectorAll( '.horse-odds__input' ).forEach( function( input ) {
+  input.addEventListener( 'focus', function( evt ) {
     evt.target.value = '';
   } );
 } );
@@ -39,7 +40,7 @@ function toPct ( val, digits ) {
   return `${ ( val * 100 ).toFixed( digits || 2 ) }%`;
 }
 
-form.addEventListener( 'change', () => {
+form.addEventListener( 'change', function() {
 
   // Update posted percentages
   let percentages = getHorsePercentages();
@@ -58,7 +59,7 @@ form.addEventListener( 'change', () => {
 
   // Update per-horse odds.
   let actuals = [];
-  percentages.forEach( ( pct, idx ) => {
+  percentages.forEach( function( pct, idx ) {
     let output = getHorseOutputNode( idx );
 
     if ( ! pct ) {
@@ -81,7 +82,7 @@ form.addEventListener( 'change', () => {
     horse: [ 0 ],
     pct: -Infinity,
   };
-  actuals.forEach( ( pct, idx ) => {
+  actuals.forEach( function( pct, idx ) {
     if ( best.pct < pct ) {
       best = {
         horse: [ idx ],
@@ -93,7 +94,7 @@ form.addEventListener( 'change', () => {
   } );
   document.querySelector( '.horse-odds__advice' ).innerHTML = `Bet on horse${
     best.horse.length > 1 ? 's' : ''
-  } ${ best.horse.map( ( idx ) => {
+  } ${ best.horse.map( function( idx ) {
     return `#${ idx + 1 }`;
   } ).join( ' or ' ) }`;
 } );
